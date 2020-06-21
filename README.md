@@ -72,6 +72,13 @@ NOT > AND > OR, XOR.
 
 Nézzünk példát egy mégbonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit is!
 
+BoolCalc>>> NOT NOT NOT 1
+
+False
+
+False
+
+
 BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 
 ('||', ('^', ('or', ('or', ('XOR', False, True), ('&&', ('and', True, False), True)), False), False), True)
@@ -87,6 +94,8 @@ Szintaxis hiba a bemeneten!
 True
 
 True
+
+A fentiek esetén a két egymást követp ÉS operandust természetesen szintaktikai hiábnak érzékelte a program. Ilyen esetben is mint látjuk, a "maradék" tokenekből előállít egy eredményt, viszont ez az eredmény mivel szemantikailag eléggé aggályos kifejezésből származik, ezért helyességére nem éri meg alapozni :)
 
 
 

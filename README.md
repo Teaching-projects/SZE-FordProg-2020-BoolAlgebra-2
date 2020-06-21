@@ -19,16 +19,16 @@ A logikai kifejezések a következő építőkockákból állnak:
 
   - A legalapvetőbb, két db logikai literál, azaz az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelni egy összetettebb regexp kifejezéssel, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden 1 és annál nagyobb számjegy = igaznak értékelődik ki; ez igazából nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
   
-- Az implementált logikai operátorok: AND (and, &&) OR (or, ||) XOR (xor, ^) NOT (not, !)
-Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterekkel megadott operátorokat is.
+- Az implementált logikai operátorok: AND (and, &&), OR (or, ||), XOR (xor, ^), NOT (not, !)
+Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterükkel megadott operátorokat is.
 
-- Változók, melyeket a következő egyszerű módon tudunk deklarálni és definiálni:
+- Változók bevezetése, melyeket a következő egyszerű módon tudunk deklarálni és definiálni:
 v_a = 1 vagy vb = 0, illetve v_logikai_literal = 1.
 Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotott string.
 Ha helytelen változót próbálunk bevezetni, arról hibaüzenetet fogunk kapni.
 
-Példa:
-Tehát az előzőek alapján a következő kifejezéseket nézzük meg, milyen eredményt kapunk:
+Most hogy az alapvető építőkockákat ismerjük, nézzünk példákat sorban a fentiek használatára:
+- Nézzük meg a következő kifejezéseket, milyen eredményt kapunk:
 
 BoolCalc>>> 1 AND 1
 
@@ -36,11 +36,25 @@ BoolCalc>>> 1 AND 1
 
 True
 
+Az egyes sorok részletes jelentése:
 Az első sorban láthatjuk a beviteli sort, ahová beírhatjuk a parancsot.
 A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
 Jelen esetben azt láthatjuk, hogy két igaz literál között teremtettünk egy ÉS kapcsolatot.
 A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
 Jelen esetben ez egy igaz érték.
+
+Ha csak egy literált vizsgálunk, mint kifejezést, természetesen annak a szintaxis-fája önmaga, és "ki tudjuk értékelni" azt is:
+BoolCalc>>> 1
+
+True
+
+True
+
+BoolCalc>>> 0
+
+False
+
+False
 
 Természetesen a szintaxis-fa miatt lehetővé válik, hogy tetszőlegesen összetett kifejezéseket kombináljunk egymással, és ezeket vizsgáljuk:
 

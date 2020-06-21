@@ -116,7 +116,7 @@ BoolCalc>>> v_a
 
 True
 
-Helytelen változó bevezetése, illetve emiatt nem létrejött változó lekérdezése:
+Helytelen változó bevezetése, illetve nem létező (bár helyes névkonveciós) változó lekérdezése:
 
 BoolCalc>>> abcd=0
 
@@ -133,6 +133,14 @@ Szintaxis hiba a bemeneten!
 False
 
 False
+
+
+BoolCalc>>> v_helyes_de_nem_letezp_valtozo  
+
+('valtozo', 'v_helyes_de_nem_letezp_valtozo')
+
+Nem definialt valtozo!
+
 
 
 

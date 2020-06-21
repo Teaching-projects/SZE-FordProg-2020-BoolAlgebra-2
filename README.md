@@ -50,5 +50,14 @@ NOT > AND > OR, XOR.
 
 Nézzünk példát egy mégbonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit is!
 
+BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
+
+('||', ('^', ('or', ('or', ('XOR', False, True), ('&&', ('and', True, False), True)), False), False), True)
+
+True
+
+Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőkben próbáljukn meg szintaktikailag hibás kifejezést megadni:
+
+
 
 

@@ -43,12 +43,14 @@ Jelen esetben azt láthatjuk, hogy két igaz literál között teremtettünk egy
 A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
 Jelen esetben ez egy igaz érték.
 
-Ha csak egy literált vizsgálunk, mint kifejezést, természetesen annak a szintaxis-fája önmaga, és "ki tudjuk értékelni" azt is:
+Ha csak egy literált vizsgálunk, mint kifejezést, természetesen annak a szintaxis-fája önmaga, és "ki tudjuk értékelni" csak azt is:
+
 BoolCalc>>> 1
 
 True
 
 True
+
 
 BoolCalc>>> 0
 

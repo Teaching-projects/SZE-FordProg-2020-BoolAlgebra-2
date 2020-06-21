@@ -22,5 +22,31 @@ A logikai kifejezések a következő építőkockákból állnak:
 Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterekkel megadott operátorokat is.
 
 Példa:
-Tehát az előzőek alapján a következő kifejezéseket kombinálhatjuk össze
+Tehát az előzőek alapján a következő kifejezéseket nézzük meg, milyen eredményt kapunk:
+
+BoolCalc>>> 1 AND 1
+('AND', True, True)
+True
+
+Az első sorban láthatjuk a beviteli sort, ahová beírhatjuk a parancsot.
+A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
+Jelen esetben azt láthatjuk, hogy két igaz literál között teremtettünk egy ÉS kapcsolatot.
+A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
+Jelen esetben ez egy igaz érték.
+
+Természetesen a szintaxis-fa miatt lehetővé válik, hogy tetszőlegesen összetett kifejezéseket kombináljunk egymással, és ezeket vizsgáljuk:
+
+BoolCalc>>> 1 AND 0 OR 1 AND NOT 0
+('OR', ('AND', True, False), ('AND', True, True))
+True
+
+A fenti kifejezés értéke mint láthatjuk igaz. Itt azonban elő is jön a logikai operátorok közötti
+precedencia kérdése, melyet a program képes az általunk beállítottak szerint lekezelni.
+Jelen esetben, az ÉS operátorok által elvégzett műveletek kiértékelése után következik a VAGY operátor
+végrehajtása. Ez a viselkedés helyes, hiszen mint azt a kódban láthatjuk is, a logikai operátorok precedenciáját a következő sorrendben határoztuk meg:
+NOT > AND > OR, XOR.
+
+Nézzünk példát egy mégbonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit is!
+
+
 

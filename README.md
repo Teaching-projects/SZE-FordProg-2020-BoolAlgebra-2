@@ -25,9 +25,7 @@ Példa:
 Tehát az előzőek alapján a következő kifejezéseket nézzük meg, milyen eredményt kapunk:
 
 BoolCalc>>> 1 AND 1
-
 ('AND', True, True)
-
 True
 
 Az első sorban láthatjuk a beviteli sort, ahová beírhatjuk a parancsot.

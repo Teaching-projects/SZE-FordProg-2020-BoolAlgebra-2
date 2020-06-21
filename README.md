@@ -31,11 +31,13 @@ Hibás névkonvenció például: rossz_valtozonev=1
 Most, hogy az alapvető építőkockákat megismertük, nézzünk példákat sorban a fentiek használatára.
 Vizsgáljuk meg, a következő kifejezéseket, milyen eredményt kapunk:
 
+
 BoolCalc>>> 1 AND 1
 
 ('AND', True, True)
 
 True
+
 
 Jelmagyarázat, az egyes sorok részletes jelentésére:
 Az első sorban áll az általunk bevitt kifejezés.
@@ -45,6 +47,7 @@ A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előáll
 Ebben az esetben ez IGAZ érték.
 
 Ha csak egy literált vizsgálunk önmagában, mint logikai kifejezést, természetesen annak a szintaxis-fája saját maga lesz:
+
 
 BoolCalc>>> 1
 
@@ -59,11 +62,14 @@ False
 
 False
 
+
 Természetesen a szintaxis-fa miatt lehetővé válik, hogy tetszőlegesen összetett kifejezéseket kombináljunk egymással, és ezeket vizsgáljuk:
+
 
 BoolCalc>>> 1 AND 0 OR 1 AND NOT 0
 ('OR', ('AND', True, False), ('AND', True, True))
 True
+
 
 A fenti kifejezés értéke mint láthatjuk IGAZ. Itt azonban előjön a logikai operátorok közötti
 precedencia kérdése, melyet a program képes az általunk beállítottak szerint kezelni.
@@ -73,25 +79,29 @@ NOT > AND > XOR > OR.
 
 Nézzünk példákat bonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit:
 
+
 BoolCalc>>> NOT NOT NOT 1
 
 False
 
 False
 
+
 BoolCalc>>> 1 or 0 XOR not 0 AND 0
 
 ('XOR', ('or', True, False), ('AND', True, False))
 True
 
-BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 
+BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 
 ('||', ('^', ('or', ('or', ('XOR', False, True), ('&&', ('and', True, False), True)), False), False), True)
 
 True
 
+
 Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőben próbáljunk meg szintaktikailag szándékosan hibás kifejezést megadni:
+
 
 BoolCalc>>> 1 OR 1 AND AND 1
 
@@ -101,15 +111,19 @@ True
 
 True
 
+
 A fentiek esetén a két egymást követő ÉS operátort természetesen szintaktikai hibának érzékelte a program. Ilyen esetben mint látjuk, a "maradék" tokenekből előállít bizonyos eredményt; viszont, ez az eredmény mivel szemantikailag aggályos kifejezésből származik, helyességére nem éri meg alapozni :)
 
 Lássunk példákat helyes változó bevezetésére, majd annak értékének lekérdezésére:
+
 
 BoolCalc>>> v_a = 1
 
 ('=', 'v_a', True)
 
+
 A már inicizalizált változók értéke bármikor felülírható az értékadó kifejezés megismétlésével a már létező változón elvégezve. Illetve az adott változó tartalmát bármikor le is kérdezhetjük:
+
 
 BoolCalc>>> v_a
 
@@ -117,7 +131,9 @@ BoolCalc>>> v_a
 
 True
 
+
 Próba helytelen változó bevezetésére, illetve kísérlet nem létező (bár névkonvecionálisan helyes) változó lekérdezése:
+
 
 BoolCalc>>> abcd=0
 
@@ -136,20 +152,25 @@ False
 False
 
 
+
 BoolCalc>>> v_helyes_de_nem_letezo_valtozo  
 
 ('valtozo', 'v_helyes_de_nem_letezo_valtozo')
 
 Nem definialt valtozo!
 
+
+
 Végül nézzük meg a már előre definiált értékkel bíró változók hogyan használhatóak a logikai kifejezésekben:
 - A példában használt változók értéke: v_var1=1, v_varC=0, v_var_005=1
+
 
 BoolCalc>>> NOT 1 OR v_var1 AND v_varC XOR v_var005
 
 ('XOR', ('OR', False, ('AND', ('valtozo', 'v_var1'), ('valtozo', 'v_varC'))), ('valtozo', 'v_var005'))
 
 True
+
 
 Mint láthatjuk, a változók tárolt értéke behelyettesítődik a kiértékelés előtt, majd a helyes eredményt kapjuk.
 

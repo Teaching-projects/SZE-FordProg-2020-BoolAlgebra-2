@@ -12,7 +12,8 @@ projektben használva, amennyiben tokenizálásra és parse-olásra lenne szüks
 A funkciók bemutatása:
 
 A kalkulátor az elindítása után egy promptot jelenít meg, melyen várja a felhasználótól, hogy
-adjon meg szintaktikailag és szemantikailag helyes logikai kifejezéseket, mellyel a továbbiakban dolgozni tud.
+adjon meg szintaktikailag és szemantikailag helyes logikai kifejezéseket, mellyel a továbbiakban dolgozni tud. A program lehetőséget biztosít a maga szerény módján "változók bevezetésére" is. Ezeket egy
+értékadás művelettel tudjuk deklarálni és definiálni is egyben.
 
 A logikai kifejezések a következő építőkockákból állnak:
 
@@ -20,6 +21,11 @@ A logikai kifejezések a következő építőkockákból állnak:
   
 - Az implementált logikai operátorok: AND (and, &&) OR (or, ||) XOR (xor, ^) NOT (not, !)
 Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterekkel megadott operátorokat is.
+
+- Változók, melyeket a következő egyszerű módon tudunk deklarálni és definiálni:
+v_a = 1 vagy vb = 0, illetve v_logikai_literal = 1.
+Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotott string.
+Ha helytelen változót próbálunk bevezetni, arról hibaüzenetet fogunk kapni.
 
 Példa:
 Tehát az előzőek alapján a következő kifejezéseket nézzük meg, milyen eredményt kapunk:

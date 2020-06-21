@@ -65,13 +65,13 @@ BoolCalc>>> 1 AND 0 OR 1 AND NOT 0
 ('OR', ('AND', True, False), ('AND', True, True))
 True
 
-A fenti kifejezés értéke mint láthatjuk igaz. Itt azonban elő is jön a logikai operátorok közötti
-precedencia kérdése, melyet a program képes az általunk beállítottak szerint lekezelni.
+A fenti kifejezés értéke mint láthatjuk IGAZ. Itt azonban előjön a logikai operátorok közötti
+precedencia kérdése, melyet a program képes az általunk beállítottak szerint kezelni.
 Jelen esetben, az ÉS operátorok által elvégzett műveletek kiértékelése után következik a VAGY operátor
 végrehajtása. Ez a viselkedés helyes, hiszen mint azt a kódban láthatjuk is, a logikai operátorok precedenciáját a következő sorrendben határoztuk meg:
-NOT > AND > OR, XOR.
+NOT > AND > XOR > OR.
 
-Nézzünk példát egy mégbonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit is!
+Nézzünk példákat bonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit:
 
 BoolCalc>>> NOT NOT NOT 1
 
@@ -91,7 +91,7 @@ BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 
 True
 
-Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőben próbáljunk meg szintaktikailag hibás kifejezést megadni:
+Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőben próbáljunk meg szintaktikailag szándékosan hibás kifejezést megadni:
 
 BoolCalc>>> 1 OR 1 AND AND 1
 
@@ -101,15 +101,15 @@ True
 
 True
 
-A fentiek esetén a két egymást követp ÉS operandust természetesen szintaktikai hiábnak érzékelte a program. Ilyen esetben is mint látjuk, a "maradék" tokenekből előállít egy eredményt, viszont ez az eredmény mivel szemantikailag eléggé aggályos kifejezésből származik, ezért helyességére nem éri meg alapozni :)
+A fentiek esetén a két egymást követő ÉS operátort természetesen szintaktikai hibának érzékelte a program. Ilyen esetben mint látjuk, a "maradék" tokenekből előállít bizonyos eredményt; viszont, ez az eredmény mivel szemantikailag aggályos kifejezésből származik, helyességére nem éri meg alapozni :)
 
-Példák helyes változó bevezetésére, majd annak értékének lekérdezésére:
+Lássunk példákat helyes változó bevezetésére, majd annak értékének lekérdezésére:
 
 BoolCalc>>> v_a = 1
 
 ('=', 'v_a', True)
 
-A már inicizalizált változók értéke bármikor felülírható az értékadó kifejezés ismétlésével a már létező változónévem. Illetve az adott változó tartalmát bármikor le is kérdezhetjük:
+A már inicizalizált változók értéke bármikor felülírható az értékadó kifejezés megismétlésével a már létező változón elvégezve. Illetve az adott változó tartalmát bármikor le is kérdezhetjük:
 
 BoolCalc>>> v_a
 
@@ -117,7 +117,7 @@ BoolCalc>>> v_a
 
 True
 
-Helytelen változó bevezetése, illetve nem létező (bár helyes névkonveciós) változó lekérdezése:
+Próba helytelen változó bevezetésére, illetve kísérlet nem létező (bár névkonvecionálisan helyes) változó lekérdezése:
 
 BoolCalc>>> abcd=0
 
@@ -136,11 +136,38 @@ False
 False
 
 
-BoolCalc>>> v_helyes_de_nem_letezp_valtozo  
+BoolCalc>>> v_helyes_de_nem_letezo_valtozo  
 
-('valtozo', 'v_helyes_de_nem_letezp_valtozo')
+('valtozo', 'v_helyes_de_nem_letezo_valtozo')
 
 Nem definialt valtozo!
+
+Végül nézzük meg a már előre definiált értékkel bíró változók hogyan használhatóak a logikai kifejezésekben:
+- A példában használt változók értéke: v_var1=1, v_varC=0, v_var_005=1
+
+BoolCalc>>> NOT 1 OR v_var1 AND v_varC XOR v_var005
+
+('XOR', ('OR', False, ('AND', ('valtozo', 'v_var1'), ('valtozo', 'v_varC'))), ('valtozo', 'v_var005'))
+
+True
+
+Mint láthatjuk, a változók tárolt értéke behelyettesítődik a kiértékelés előtt, majd a helyes eredményt kapjuk.
+
+A program létrehozásában segítésgemre voltak a következő források:
+
+- PLY (Python Lex-Yacc) David M. Beazley - https://www.dabeaz.com/ply/ply.html
+- Make your Own Calculator in Python - https://youtu.be/Hh49BXmHxX8
+
+
+
+
+
+---------------------------
+!!KNOWN ISSUE: Az igazsághoz hozzá tartozik, hogy egy bizonyos esetben hibás működést figyeltem meg,
+amit még nem sikerült kiküszöbölnöm, további utángondolást igényel a megoldása. A változók negálásánál, amennyiben annak értéke HAMIS, sajnos nem történik meg a negáció (valószínű, hogy az IGAZ értéknél is fals-helyes hamis értékkel van dolgom). Tehát a NOT v_var_005 esetén fals hamis érték jelentkezik.
+
+
+
 
 
 

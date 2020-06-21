@@ -3,32 +3,33 @@ Hollosy Adam
 
 Boolean Kalkulátor
 
-Ebben a kis python programban egy végtelenül egyszerű boolean kifejezéseket kiértékelő kalkulátor
-megvalósítását tűztem ki célul. Nyilván a projekt elsődleges célja, hogy a Ply lex és yacc python
-implementációjának használatában mélyedjek kicsit el, így a képességei igencsak limitáltak,
+Ebben a kis Python programban egy végtelenül egyszerű boolean kifejezéseket kiértékelő kalkulátor
+megvalósítását tűztem ki célul. Nyilván a projekt elsődleges célja, hogy a Ply lex és yacc Python
+implementációjának használatában mélyedjek kicsit el, így bár a képességei igencsak limitáltak,
 viszont a Ply elemeivel való ismerkedés jól mutatja, milyen hatékony eszköz lehet egy nagyobb
 projektben használva, amennyiben tokenizálásra és parse-olásra lenne szükség.
 
-A funkciók bemutatása:
+A fő funkciók bemutatása:
 
-A kalkulátor az elindítása után egy promptot jelenít meg, melyen várja a felhasználótól, hogy
+A kalkulátor az elindítása után egy promptot jelenít meg, és várja a felhasználótól, hogy
 adjon meg szintaktikailag és szemantikailag helyes logikai kifejezéseket, mellyel a továbbiakban dolgozni tud. A program lehetőséget biztosít a maga szerény módján "változók bevezetésére" is. Ezeket egy
-értékadás művelettel tudjuk deklarálni és definiálni is egyben.
+értékadás művelettel tudjuk deklarálni és definiálni is egyben. A változók tartalma tetszőleges alkalommal megváltoztatható egy rajtuk elvégzett újabb értékadással, illetve tartalmuk bármikor lekérdezhető. A rosszul megadott változónevekről, illetve a szintaktikailag helytelen kifejezésekről hibaüzenetben tájékoztat minket a program.
 
 A logikai kifejezések a következő építőkockákból állnak:
 
-  - A legalapvetőbb, két db logikai literál, azaz az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelni egy összetettebb regexp kifejezéssel, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden 1 és annál nagyobb számjegy = igaznak értékelődik ki; ez igazából nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
+  - A legalapvetőbb, két db logikai literál, az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelembe venni egy összetettebb regexp kifejezéssel, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden (1 és annál nagyobb számjegy) = igaznak értékelődik ki; ez nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
   
 - Az implementált logikai operátorok: AND (and, &&), OR (or, ||), XOR (xor, ^), NOT (not, !)
 Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterükkel megadott operátorokat is.
 
-- Változók bevezetése, melyeket a következő egyszerű módon tudunk deklarálni és definiálni:
+- Változók és azok bevezetése; a következő egyszerű módon tudunk deklarálni és definiálni:
 v_a = 1 vagy vb = 0, illetve v_logikai_literal = 1.
-Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotott string.
+- Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotott string.
 Ha helytelen változót próbálunk bevezetni, arról hibaüzenetet fogunk kapni.
+Hibás névkonvenció például: rossz_valtozonev=1
 
-Most hogy az alapvető építőkockákat ismerjük, nézzünk példákat sorban a fentiek használatára:
-- Nézzük meg a következő kifejezéseket, milyen eredményt kapunk:
+Most, hogy az alapvető építőkockákat megismertük, nézzünk példákat sorban a fentiek használatára.
+Vizsgáljuk meg, a következő kifejezéseket, milyen eredményt kapunk:
 
 BoolCalc>>> 1 AND 1
 
@@ -36,14 +37,14 @@ BoolCalc>>> 1 AND 1
 
 True
 
-Az egyes sorok részletes jelentése:
-Az első sorban láthatjuk a beviteli sort, ahová beírhatjuk a parancsot.
+Jelmagyarázat, az egyes sorok részletes jelentésére:
+Az első sorban áll az általunk bevitt kifejezés.
 A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
-Jelen esetben azt láthatjuk, hogy két igaz literál között teremtettünk egy ÉS kapcsolatot.
+Jelen esetben, két igaz literál között teremtettünk egy ÉS kapcsolatot.
 A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
-Jelen esetben ez egy igaz érték.
+Ebben az esetben ez IGAZ érték.
 
-Ha csak egy literált vizsgálunk, mint kifejezést, természetesen annak a szintaxis-fája önmaga, és "ki tudjuk értékelni" csak azt is:
+Ha csak egy literált vizsgálunk önmagában, mint logikai kifejezést, természetesen annak a szintaxis-fája saját maga lesz:
 
 BoolCalc>>> 1
 

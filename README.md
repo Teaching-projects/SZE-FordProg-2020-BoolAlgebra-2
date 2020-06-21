@@ -56,7 +56,15 @@ BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 
 True
 
-Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőkben próbáljukn meg szintaktikailag hibás kifejezést megadni:
+Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőben próbáljunk meg szintaktikailag hibás kifejezést megadni:
+
+BoolCalc>>> 1 OR 1 AND AND 1
+
+Szintaxis hiba a bemeneten!
+
+True
+
+True
 
 
 

@@ -116,6 +116,25 @@ BoolCalc>>> v_a
 
 True
 
+Helytelen változó bevezetése, illetve emiatt nem létrejött változó lekérdezése:
+
+BoolCalc>>> abcd=0
+
+Nem megengedett karakter erkezett a bemeneten!
+
+Nem megengedett karakter erkezett a bemeneten!
+
+Nem megengedett karakter erkezett a bemeneten!
+
+Nem megengedett karakter erkezett a bemeneten!
+
+Szintaxis hiba a bemeneten!
+
+False
+
+False
+
+
 
 
 

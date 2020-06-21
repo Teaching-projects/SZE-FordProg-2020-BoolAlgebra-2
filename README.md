@@ -78,8 +78,13 @@ False
 
 False
 
+BoolCalc>>> 1 or 0 XOR not 0 AND 0
+
+('XOR', ('or', True, False), ('AND', True, False))
+True
 
 BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
+
 
 ('||', ('^', ('or', ('or', ('XOR', False, True), ('&&', ('and', True, False), True)), False), False), True)
 

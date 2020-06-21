@@ -102,6 +102,22 @@ True
 
 A fentiek esetén a két egymást követp ÉS operandust természetesen szintaktikai hiábnak érzékelte a program. Ilyen esetben is mint látjuk, a "maradék" tokenekből előállít egy eredményt, viszont ez az eredmény mivel szemantikailag eléggé aggályos kifejezésből származik, ezért helyességére nem éri meg alapozni :)
 
+Példák helyes változó bevezetésére, majd annak értékének lekérdezésére:
+
+BoolCalc>>> v_a = 1
+
+('=', 'v_a', True)
+
+A már inicizalizált változók értéke bármikor felülírható az értékadó kifejezés ismétlésével a már létező változónévem. Illetve az adott változó tartalmát bármikor le is kérdezhetjük:
+
+BoolCalc>>> v_a
+
+('valtozo', 'v_a')
+
+True
+
+
+
 
 
 

@@ -24,7 +24,7 @@ Mint látható, itt már a program képes felismerni a csak nagybetűsített, cs
 
 - Változók és azok bevezetése; a következő egyszerű módon tudunk deklarálni és definiálni:
 v_a = 1 vagy vb = 0, illetve v_logikai_literal = 1.
-Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotott string.
+Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd ezt követve minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotta string következhet.
 Ha helytelen változót próbálunk bevezetni, arról hibaüzenetet fogunk kapni.
 Hibás névkonvenció például: rossz_valtozonev=1
 

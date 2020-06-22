@@ -3,8 +3,8 @@ Hollosy Adam
 
 Boolean Kalkulátor
 
-Ebben a kis Python programban egy végtelenül egyszerű boolean kifejezéseket kiértékelő kalkulátor
-megvalósítását tűztem ki célul. Nyilván a projekt elsődleges célja, hogy a Ply lex és yacc Python
+Ebben a kis Python programban egy végtelenül egyszerű, boolean kifejezéseket kiértékelő kalkulátor
+megvalósítását tűztem ki célul. Nyilván, a projekt elsődleges célja, hogy a Ply lex és yacc Python
 implementációjának használatában mélyedjek kicsit el, így bár a képességei igencsak limitáltak,
 viszont a Ply elemeivel való ismerkedés jól mutatja, milyen hatékony eszköz lehet egy nagyobb
 projektben használva, amennyiben tokenizálásra és parse-olásra lenne szükség.
@@ -12,24 +12,24 @@ projektben használva, amennyiben tokenizálásra és parse-olásra lenne szüks
 A fő funkciók bemutatása:
 
 A kalkulátor az elindítása után egy promptot jelenít meg, és várja a felhasználótól, hogy
-adjon meg szintaktikailag és szemantikailag helyes logikai kifejezéseket, mellyel a továbbiakban dolgozni tud. A program lehetőséget biztosít a maga szerény módján "változók bevezetésére" is. Ezeket egy
-értékadás művelettel tudjuk deklarálni és definiálni is egyben. A változók tartalma tetszőleges alkalommal megváltoztatható egy rajtuk elvégzett újabb értékadással, illetve tartalmuk bármikor lekérdezhető. A rosszul megadott változónevekről, illetve a szintaktikailag helytelen kifejezésekről hibaüzenetben tájékoztat minket a program.
+adjon meg szintaktikailag helyes logikai kifejezéseket, mellyel a továbbiakban dolgozni tud. A program lehetőséget biztosít a maga szerény módján "változók bevezetésére" is. Ezeket egy
+értékadás művelettel tudjuk deklarálni és definiálni is egyben. A változók tartalma tetszőleges alkalommal megváltoztatható egy rajtuk elvégzett újabb értékadással, illetve tartalmuk bármikor lekérdezhető. A helytelen változónevekről, illetve a szintaktikailag hibás kifejezésekről adekvát hibaüzenetekben kapunk tájékoztatást.
 
 A logikai kifejezések a következő építőkockákból állnak:
 
-  - A legalapvetőbb, két db logikai literál, az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelembe venni egy összetettebb regexp kifejezéssel, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden (1 és annál nagyobb számjegy) = igaznak értékelődik ki; ez nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
+  - A legalapvetőbb, két db logikai literál, az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelembe venni összetettebb regexpek segítségével, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden (1 és annál nagyobb számjegy) = igaznak értékelődik ki; ez nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
   
 - Az implementált logikai operátorok: AND (and, &&), OR (or, ||), XOR (xor, ^), NOT (not, !)
-Mint látható, itt már a program képes felismerni a csak nagybetűsített, csak kisbetűs, illetve a karakterükkel megadott operátorokat is.
+Mint látható, itt már a program képes felismerni a csak nagybetűs, csak kisbetűs, illetve a speciális karakterükkel megadott operátorokat is.
 
-- Változók és azok bevezetése; a következő egyszerű módon tudunk deklarálni és definiálni:
-v_a = 1 vagy vb = 0, illetve v_logikai_literal = 1.
+- Változók és azok bevezetése; a következő egyszerű módon tudunk deklarálni és definiálni változókat:
+v_a = 1 vagy vb23 = 0, illetve v_logikai_literal = 1.
 Minden változó neve kötelezően kis v betűvel kell hogy kezdődjön, majd minimum egy (de tetszőleges számú) kisbetű, nagybetű, szám, illetve alahúzasjel konkatenációja által alkotta string következhet.
 Ha helytelen változót próbálunk bevezetni, arról hibaüzenetet fogunk kapni.
 Hibás névkonvenció például: rossz_valtozonev=1
 
 Most, hogy az alapvető építőkockákat megismertük, nézzünk példákat sorban a fentiek használatára.
-Vizsgáljuk meg, a következő kifejezéseket, milyen eredményt kapunk:
+Vizsgáljuk meg a következő kifejezéseket, milyen eredményt kapunk:
 
 
 BoolCalc>>> 1 AND 1
@@ -40,13 +40,13 @@ True
 
 
 Jelmagyarázat, az egyes sorok részletes jelentésére:
-Az első sorban áll az általunk bevitt kifejezés.
-A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
-Jelen esetben, két igaz literál között teremtettünk egy ÉS kapcsolatot.
-A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
-Ebben az esetben ez IGAZ érték.
+- Az első sorban áll az általunk bevitt kifejezés.
+- A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
+Jelen esetben két igaz literál között teremtettünk ÉS kapcsolatot.
+- A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
+Ebben az esetben ennek értéke IGAZ.
 
-Ha csak egy literált vizsgálunk önmagában, mint logikai kifejezést, természetesen annak a szintaxis-fája saját maga lesz:
+Ha csak egy literált vizsgálunk önmagában, mint logikai kifejezést, természetesen annak a "szintaxis-fája" és eredménye is saját maga lesz:
 
 
 BoolCalc>>> 1
@@ -63,16 +63,17 @@ False
 False
 
 
-Természetesen a szintaxis-fa miatt lehetővé válik, hogy tetszőlegesen összetett kifejezéseket kombináljunk egymással, és ezeket vizsgáljuk:
+A szintaxis-fa generáló működés lehetővé teszi, hogy tetszőlegesen összetett kifejezéseket kombináljunk egymással, és ezeket vizsgáljuk:
 
 
 BoolCalc>>> 1 AND 0 OR 1 AND NOT 0
+
 ('OR', ('AND', True, False), ('AND', True, True))
 True
 
 
 A fenti kifejezés értéke mint láthatjuk IGAZ. Itt azonban előjön a logikai operátorok közötti
-precedencia kérdése, melyet a program képes az általunk beállítottak szerint kezelni.
+precedencia kérdése, melyet a program képes az általunk előírt sorrendben szerint kezelni.
 Jelen esetben, az ÉS operátorok által elvégzett műveletek kiértékelése után következik a VAGY operátor
 végrehajtása. Ez a viselkedés helyes, hiszen mint azt a kódban láthatjuk is, a logikai operátorok precedenciáját a következő sorrendben határoztuk meg:
 NOT > AND > XOR > OR.

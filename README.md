@@ -117,7 +117,7 @@ True
 
 A fentiek esetén a két egymást követő ÉS operátort természetesen szintaktikai hibának érzékelte a program. Ilyen esetben mint látjuk, a szintaktikailag helyes, "maradék" tokenekből bár megpróbál előállítani bizonyos eredményt; viszont ez az eredmény, a "maradék volta" miatt szemantikailag már aggályos, nem éri meg belőle az eredeti kifejezésre nézve messzemenő következtetéseket levonni :)
 
-Lássunk példákat változó bevezetésére, majd annak értékének lekérdezésére:
+Lássunk példát változó bevezetésére, majd annak értékének lekérdezésére:
 
 
 BoolCalc>>> v_a = 1
@@ -125,7 +125,7 @@ BoolCalc>>> v_a = 1
 ('=', 'v_a', True)
 
 
-A már inicizalizált változók értéke bármikor felülírható az értékadó kifejezés megismétlésével a már létező változón elvégezve. Illetve az adott változó tartalmát bármikor le is kérdezhetjük:
+A már inicizalizált változó értéke bármikor felülírható az értékadó kifejezés megismétlésével, azt a már létező változón újra elvégezve. Illetve, az adott változó tartalmát bármikor le is kérdezhetjük:
 
 
 BoolCalc>>> v_a
@@ -135,7 +135,7 @@ BoolCalc>>> v_a
 True
 
 
-Próba helytelen változó bevezetésére, illetve kísérlet nem létező (bár névkonvecionálisan helyes) változó lekérdezése:
+Próba helytelen változó bevezetésére, illetve kísérlet nem létező (bár névkonveció szempontjából helyes) változó lekérdezése:
 
 
 BoolCalc>>> abcd=0
@@ -156,15 +156,15 @@ False
 
 
 
-BoolCalc>>> v_helyes_de_nem_letezo_valtozo  
+BoolCalc>>> v_helyesen_elnevezett_de_nem_letezo_valtozo  
 
-('valtozo', 'v_helyes_de_nem_letezo_valtozo')
+('valtozo', 'v_helyesen_elnevezett_de_nem_letezo_valtozo')
 
 Nem definialt valtozo!
 
 
 
-Végül nézzük meg a már előre definiált értékkel bíró változók hogyan használhatóak a logikai kifejezésekben:
+Végül, nézzük meg a már definiált értékkel bíró változók használatát a logikai kifejezésekben:
 - A példában használt változók értéke: v_var1=1, v_varC=0, v_var_005=1
 
 

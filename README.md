@@ -165,7 +165,7 @@ Nem definialt valtozo!
 
 
 Végül, nézzük meg a már definiált értékkel bíró változók használatát a logikai kifejezésekben:
-- A példában használt változók értéke: v_var1=1, v_varC=0, v_var_005=1
+- A példában használt változók értékei: v_var1=1, v_varC=0, v_var_005=1.
 
 
 BoolCalc>>> NOT 1 OR v_var1 AND v_varC XOR v_var005
@@ -175,7 +175,7 @@ BoolCalc>>> NOT 1 OR v_var1 AND v_varC XOR v_var005
 True
 
 
-Mint láthatjuk, a változók tárolt értéke behelyettesítődik a kiértékelés előtt, majd a helyes eredményt kapjuk.
+Mint láthatjuk, a változókban tárolt értékek behelyettesítődnek a kiértékelés előtt, majd a teljes kifejezés kiértékelésével a helyes eredményt kapjuk.
 
 A program létrehozásában segítésgemre voltak a következő források:
 

@@ -177,7 +177,7 @@ True
 
 Mint láthatjuk, a változókban tárolt értékek behelyettesítődnek a kiértékelés előtt, majd a teljes kifejezés kiértékelésével a helyes eredményt kapjuk.
 
-A program létrehozásában segítésgemre voltak a következő források:
+A program létrehozásában segítségemre voltak a következő források:
 
 - PLY (Python Lex-Yacc) David M. Beazley - https://www.dabeaz.com/ply/ply.html
 - Make your Own Calculator in Python - https://youtu.be/Hh49BXmHxX8

@@ -17,7 +17,7 @@ adjon meg szintaktikailag helyes logikai kifejezéseket, mellyel a továbbiakban
 
 A logikai kifejezések a következő építőkockákból állnak:
 
-  - A legalapvetőbb, két db logikai literál, az 1 (igaz) és a 0 (hamis). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelembe venni összetettebb regexpek segítségével, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = hamis, minden (1 és annál nagyobb számjegy) = igaznak értékelődik ki; ez nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
+  - A legalapvetőbb, két db logikai literál, az 1 (IGAZ) és a 0 (HAMIS). A program jelenleg ezt a két karaktert tekinti csak valid literálnak. Ez azért van, mert bár lehetett volna még a különböző string reprezentációkat is figyelembe venni összetettebb regexpek segítségével, de akkor túlságosan bonyolulttá vált volna a tokenkezelés. Jelenleg a feldolgozás során minden 0 = HAMIS, minden (1 és annál nagyobb számjegy) = IGAZ-nak értékelődik ki; ez nem jelent a működésre nézve további fennakadásokat, de a konvertálási technikából származó tulajdonságként mindenképpen megemlítendő.
   
 - Az implementált logikai operátorok: AND (and, &&), OR (or, ||), XOR (xor, ^), NOT (not, !)
 Mint látható, itt már a program képes felismerni a csak nagybetűs, csak kisbetűs, illetve a speciális karakterükkel megadott operátorokat is.

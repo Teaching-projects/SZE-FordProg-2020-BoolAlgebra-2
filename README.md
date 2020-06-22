@@ -69,16 +69,17 @@ A szintaxis-fa generáló működés lehetővé teszi, hogy tetszőlegesen össz
 BoolCalc>>> 1 AND 0 OR 1 AND NOT 0
 
 ('OR', ('AND', True, False), ('AND', True, True))
+
 True
 
 
 A fenti kifejezés értéke mint láthatjuk IGAZ. Itt azonban előjön a logikai operátorok közötti
-precedencia kérdése, melyet a program képes az általunk előírt sorrendben szerint kezelni.
-Jelen esetben, az ÉS operátorok által elvégzett műveletek kiértékelése után következik a VAGY operátor
+precedencia kérdése, melyet a program képes az általunk meghatározott, előírt sorrend szerint kezelni.
+Jelen esetben az ÉS operátorok által elvégzett műveletek kiértékelése után következik a VAGY operátor
 végrehajtása. Ez a viselkedés helyes, hiszen mint azt a kódban láthatjuk is, a logikai operátorok precedenciáját a következő sorrendben határoztuk meg:
 NOT > AND > XOR > OR.
 
-Nézzünk példákat bonyolultabb kifejezésre, ahol már fölváltva használjuk a különböző logikai operátorok reprezentációit:
+Nézzünk példákat bonyolultabb kifejezésekre, ahol már fölváltva használjuk a különböző logikai operátorok eltérő reprezentációit:
 
 
 BoolCalc>>> NOT NOT NOT 1
@@ -91,6 +92,7 @@ False
 BoolCalc>>> 1 or 0 XOR not 0 AND 0
 
 ('XOR', ('or', True, False), ('AND', True, False))
+
 True
 
 
@@ -101,7 +103,7 @@ BoolCalc>>> 0 XOR 1 or 1 and NOT not 0 && 1 or !1 ^ 0 || 1
 True
 
 
-Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőben próbáljunk meg szintaktikailag szándékosan hibás kifejezést megadni:
+Mint láthatjuk, ez sem okoz problémát a kiértékelésben. A következőkben próbáljunk meg szintaktikailag szándékosan hibás kifejezést megadni:
 
 
 BoolCalc>>> 1 OR 1 AND AND 1
@@ -113,9 +115,9 @@ True
 True
 
 
-A fentiek esetén a két egymást követő ÉS operátort természetesen szintaktikai hibának érzékelte a program. Ilyen esetben mint látjuk, a "maradék" tokenekből előállít bizonyos eredményt; viszont, ez az eredmény mivel szemantikailag aggályos kifejezésből származik, helyességére nem éri meg alapozni :)
+A fentiek esetén a két egymást követő ÉS operátort természetesen szintaktikai hibának érzékelte a program. Ilyen esetben mint látjuk, a szintaktikailag helyes, "maradék" tokenekből bár megpróbál előállítani bizonyos eredményt; viszont ez az eredmény, a "maradék volta" miatt szemantikailag már aggályos, nem éri meg belőle az eredeti kifejezésre nézve messzemenő következtetéseket levonni :)
 
-Lássunk példákat helyes változó bevezetésére, majd annak értékének lekérdezésére:
+Lássunk példákat változó bevezetésére, majd annak értékének lekérdezésére:
 
 
 BoolCalc>>> v_a = 1

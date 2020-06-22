@@ -188,7 +188,7 @@ A program létrehozásában segítésgemre voltak a következő források:
 
 ---------------------------
 !!KNOWN ISSUE: Az igazsághoz hozzá tartozik, hogy egy bizonyos esetben hibás működést figyeltem meg,
-amit még nem sikerült kiküszöbölnöm, további utángondolást igényel a megoldása. A változók negálásánál, amennyiben annak értéke HAMIS, sajnos nem történik meg a negáció (valószínű, hogy az IGAZ értéknél is falshelyes hamis eredményértékkel van dolgom). Tehát a NOT v_var_005 esetén fals hamis érték jelentkezik.
+amit még nem sikerült kiküszöbölnöm; további utángondolást igényel ennek megoldása. A változók negálásánál, amennyiben annak tárolt értéke HAMIS, sajnos nem történik meg a negáció (egyébként valószínű, hogy a tárolt IGAZ értékre is falshelyes hamis eredményértékkel van dolgom). Tehát a NOT v_var_005 esetén bár hamis érték jelentkezik, de ez nem a tényleges negáció miatt áll elő.
 
 
 

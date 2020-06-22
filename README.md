@@ -42,7 +42,7 @@ True
 Jelmagyarázat, az egyes sorok részletes jelentésére:
 - Az első sorban áll az általunk bevitt kifejezés.
 - A második sorban azt láthatjuk, milyen szintaxis-fa felépülését eredményezi a bevitt kifejezés.
-Jelen esetben két igaz literál között teremtettünk ÉS kapcsolatot.
+Jelen esetben két IGAZ literál között teremtettünk ÉS kapcsolatot.
 - A harmadik sor szolgáltatja az egész kifejezés kiértékelése után előálló végeredményt.
 Ebben az esetben ennek értéke IGAZ.
 
@@ -188,7 +188,7 @@ A program létrehozásában segítésgemre voltak a következő források:
 
 ---------------------------
 !!KNOWN ISSUE: Az igazsághoz hozzá tartozik, hogy egy bizonyos esetben hibás működést figyeltem meg,
-amit még nem sikerült kiküszöbölnöm; további utángondolást igényel ennek megoldása. A változók negálásánál, amennyiben annak tárolt értéke HAMIS, sajnos nem történik meg a negáció (egyébként valószínű, hogy a tárolt IGAZ értékre is falshelyes hamis eredményértékkel van dolgom). Tehát a NOT v_var_005 esetén bár hamis érték jelentkezik, de ez nem a tényleges negáció miatt áll elő.
+amit még nem sikerült kiküszöbölnöm; további utángondolást igényel ennek megoldása. A változók negálásánál, amennyiben annak tárolt értéke HAMIS, sajnos nem történik meg a negáció (egyébként valószínű, hogy a tárolt IGAZ értékre is falshelyes HAMIS eredményértékkel van dolgom). Tehát a NOT v_var_005 esetén bár HAMIS érték jelentkezik, de ez nem a tényleges, IGAZ értéket tartalmazó változón megtörtént negáció hatására történik.
 
 
 
